@@ -2,8 +2,13 @@
   <head><title>Inovice Scanner </title>
   </head>
   <style>
+    body {
+      text-align: center;
+      font-family: Inter;
+      background-color: gray;
+    }
     input {
-      height: 21%;
+      height: 45%;
       width: 98%;
       border: 0px;
       border-radius: 10px;
@@ -13,8 +18,14 @@
       height: 20%;
       width: 25%;
       align-items: center;
+      background-color: #D5FFC9;
     }
-      
+      .card {
+        height: 40%;
+        width: 90%;
+        background-color: light-gray;
+        font-family: Inter;
+      }
   </style>
   <body>
   <input id="file" type="file" placeholder="Enter Files Here">
@@ -27,8 +38,8 @@
     <p> 2. Select the form in which you want them. </p>
     <p> Raw Text - Text obtained by scanning the QR Code. Can be any form as long as QR code is scannable </p>
     <p> Decoded text - Decodes the QR code's base 64 and JSON to give the pure text, including buyer id, seller id, gst numbers, etc</p>
-  
   </div>
   </body>
+  <script src="index.js"></script>
   </html>
     

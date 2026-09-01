@@ -3,6 +3,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   </head>
   <style>
+    
     body {
       text-align: center;
       font-family: Inter;
@@ -36,6 +37,26 @@
         cursor: pointer;
         background-color: #b8f0a3;
       }
+.hidden-input {
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #D5FFC9;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: Inter;
+}
+
+.file-label:hover {
+  background-color: #b8f0a3;
+}
       .card {
         height: 40%;
         width: 90%;
@@ -48,6 +69,8 @@
         box-shadow:  0 2px 12px rgba(0,0,0,0.1);
       }
     .flex {
+      height: 200px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -57,14 +80,16 @@
       font-weight: 5px;
   </style>
   <body>
-  <input id="file" type="file" placeholder="Enter Files Here">
+<input id="file" type="file" class="hidden-input">
+<label for="file" class="file-label">Choose Invoice Files</label>
   <div class="flex">
     <button id="text">Raw Text</button>
     <button id="text_decoded"> Decoded Text </button>
     <button id="excel"> Excel Sheet </button><br>
   </div>
+      <div class="card">
     <h3> How to use </h3>
-  <div class="card">
+
     <p> 1. Select all the files that need conversion and put them into the input. </p>
     <p> 2. Select the form in which you want them. </p>
     <p> Raw Text - Text obtained by scanning the QR Code. Can be any form as long as QR code is scannable </p>

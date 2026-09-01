@@ -14,11 +14,13 @@
       border-radius: 10px;
     }
     button {
-      display: flex;
-      height: 20%;
+      height: 7%;
       width: 25%;
       align-items: center;
+      text-align: center;
       background-color: #D5FFC9;
+      border: 0px;
+      border-radius: 25px;
     }
       .card {
         height: 40%;
@@ -26,13 +28,19 @@
         background-color: light-gray;
         font-family: Inter;
       }
+    .flex {
+      display: flex;
+      align-items: center;
+    }
   </style>
   <body>
   <input id="file" type="file" placeholder="Enter Files Here">
-  <button id="text">Raw Text</button>
-  <button id="text_decoded"> Decoded Text </button>
-  <button id="excel"> Excel Sheet </button><br>
-  <h3> How to use </h3>
+  <div class="flex">
+    <button id="text">Raw Text</button>
+    <button id="text_decoded"> Decoded Text </button>
+    <button id="excel"> Excel Sheet </button><br>
+  </div>
+    <h3> How to use </h3>
   <div class="card">
     <p> 1. Select all the files that need conversion and put them into the input. </p>
     <p> 2. Select the form in which you want them. </p>

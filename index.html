@@ -1,101 +1,62 @@
-<html>
-  <head><title>Inovice Scanner </title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  </head>
-  <style>
-    
-    body {
-      text-align: center;
-      font-family: Inter;
-      background-color: gray;
-      height: 100%;
-      margin: 0;
-      padding: 2rem;
-    }
-    input {
-      margin: 0px auto;
-      max-width: 600px;
-      height: 45%;
-      width: 98%;
-      border: 0px;
-      border-radius: 10px;
-      align: center;
-    }
-    button {
-      height: 14%;
-      width: 30%;
-      align-items: center;
-      text-align: center;
-      background-color: #D5FFC9;
-      border: 0px;
-      border-radius: 25px;
-      margin: 5px auto;
-    }
-      button:hover {
-        height: 15%;
-        width: 31%;
-        cursor: pointer;
-        background-color: #b8f0a3;
-      }
-.hidden-input {
-  opacity: 0;
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice QR Scanner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Invoice QR Scanner</h1>
+      <p>Drop in your invoice PDFs, pull the QR data, and download it as a spreadsheet — all in the browser.</p>
+    </header>
 
-.file-label {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #D5FFC9;
-  border-radius: 25px;
-  cursor: pointer;
-  font-family: Inter;
-}
+    <section class="card upload-card">
+      <div id="dropzone" class="dropzone">
+        <input id="file-input" type="file" accept="application/pdf" multiple class="hidden-input">
+        <label for="file-input" class="file-label">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 16V4M12 4L7 9M12 4L17 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Choose or drag PDF invoices here</span>
+        </label>
+        <p class="hint">Multiple files supported · PDF only</p>
+      </div>
 
-.file-label:hover {
-  background-color: #b8f0a3;
-}
-      .card {
-        height: 40%;
-        width: 90%;
-        background-color: white;
-        font-family: Inter;
-        align-items: center;
-        margin: 0px auto;
-        border-radius: 15px;
-        max-width: 600px;
-        box-shadow:  0 2px 12px rgba(0,0,0,0.1);
-      }
-    .flex {
-      height: 200px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    h3 {
-      font-weight: 5px;
-  </style>
-  <body>
-<input id="file" type="file" class="hidden-input">
-<label for="file" class="file-label">Choose Invoice Files</label>
-  <div class="flex">
-    <button id="text">Raw Text</button>
-    <button id="text_decoded"> Decoded Text </button>
-    <button id="excel"> Excel Sheet </button><br>
+      <div id="file-list" class="file-list hidden"></div>
+
+      <div class="actions">
+        <button id="btn-raw" class="action-btn" disabled>Raw Text</button>
+        <button id="btn-decoded" class="action-btn" disabled>Decoded Text</button>
+        <button id="btn-excel" class="action-btn primary" disabled>Excel Sheet</button>
+      </div>
+
+      <div id="status" class="status hidden"></div>
+    </section>
+
+    <section id="results" class="card results-card hidden">
+      <div class="results-header">
+        <h2 id="results-title">Results</h2>
+        <span id="results-meta" class="results-meta"></span>
+      </div>
+      <div id="results-body" class="results-body"></div>
+    </section>
+
+    <section class="card info-card">
+      <h3>How to use</h3>
+      <ol>
+        <li>Select all the invoice PDFs you want to scan.</li>
+        <li>Pick a format: <strong>Raw Text</strong> (whatever the QR code encodes, unmodified), <strong>Decoded Text</strong> (base64/JSON decoded into readable fields — buyer/seller GSTIN, invoice number, etc.), or <strong>Excel Sheet</strong> (all decoded fields compiled into a downloadable workbook).</li>
+        <li>Excel downloads automatically once processing finishes; failed files are listed on a separate "Failed" sheet.</li>
+      </ol>
+    </section>
+
+    <footer class="footer">
+      <span id="footer-time"></span>
+    </footer>
   </div>
-      <div class="card">
-    <h3> How to use </h3>
 
-    <p> 1. Select all the files that need conversion and put them into the input. </p>
-    <p> 2. Select the form in which you want them. </p>
-    <p> Raw Text - Text obtained by scanning the QR Code. Can be any form as long as QR code is scannable </p>
-    <p> Decoded text - Decodes the QR code's base 64 and JSON to give the pure text, including buyer id, seller id, gst numbers, etc</p>
-  </div>
-  </body>
-  <script src="index.js"></script>
-  </html>
-    
+  <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

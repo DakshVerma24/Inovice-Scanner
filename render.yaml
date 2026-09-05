@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: invoice-qr-scanner
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
